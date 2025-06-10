@@ -26,6 +26,7 @@
     ```bash
     # Analyze a GitHub repository
     python main.py --repo https://github.com/username/repo --include "*.py" "*.js" --exclude "tests/*" --max-size 50000
+    python main.py --repo https://github.com/MithunKiniStar/E-Commerce-Microservice-master --include "*.java" "*.xml" "*.properties" "*.yml" --exclude "tests/*" "target/*" --language english
 
     # Or, analyze a local directory
     python main.py --dir /path/to/your/codebase --include "*.py" --exclude "*test*"
