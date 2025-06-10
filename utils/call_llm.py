@@ -43,7 +43,7 @@ def call_llm(prompt: str, use_cache: bool = True) -> str:
     
     # Call the LLM if not in cache or cache disabled
     client = genai.Client(
-        api_key=os.getenv("GEMINI_API_KEY", "AIzaSyD3E2qoqdMm7ogIB5MsnE1Jt9C3oWSHWeE")
+        api_key=os.getenv("GEMINI_API_KEY", "")
     )
     model = os.getenv("GEMINI_MODEL", "gemini-2.5-pro-preview-03-25")
     response = client.models.generate_content(
