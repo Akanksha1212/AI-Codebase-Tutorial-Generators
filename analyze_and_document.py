@@ -1,6 +1,7 @@
 from utils.crawl_local_files import crawl_local_files
 import os
 import json
+import argparse
 
 def create_microservice_documentation(files):
     """Analyze files and create documentation structure"""
@@ -115,19 +116,12 @@ def generate_markdown(documentation):
     
     return "\n".join(md)
 
-def main():
-    # Create output directory if it doesn't exist
-    output_dir = "output"
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
-    
-    # Directory path
-    directory = "/Users/netrapawar/Downloads/E-Commerce-Microservice-master"
-    
+def analyze_directory(directory_path):
+    """Analyze a directory and generate documentation"""
     # Crawl the files
     print("Crawling Java files...")
     result = crawl_local_files(
-        directory=directory,
+        directory=directory_path,
         include_patterns={"*.java"},
         use_relative_paths=True
     )
@@ -139,6 +133,11 @@ def main():
     # Analyze and create documentation
     print("\nAnalyzing files and generating documentation...")
     documentation = create_microservice_documentation(files)
+    
+    # Create output directory if it doesn't exist
+    output_dir = "output"
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
     
     # Save raw documentation structure as JSON
     with open(os.path.join(output_dir, "documentation.json"), "w") as f:
@@ -152,6 +151,15 @@ def main():
     print("\nDocumentation generated successfully!")
     print(f"- JSON structure: {os.path.join(output_dir, 'documentation.json')}")
     print(f"- Markdown documentation: {os.path.join(output_dir, 'documentation.md')}")
+    
+    return documentation
+
+def main():
+    parser = argparse.ArgumentParser(description="Generate documentation for a Java microservice project")
+    parser.add_argument("--dir", required=True, help="Path to the Java project directory")
+    args = parser.parse_args()
+    
+    analyze_directory(args.dir)
 
 if __name__ == "__main__":
     main() 
