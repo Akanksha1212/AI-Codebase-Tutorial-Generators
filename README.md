@@ -21,6 +21,6 @@
 
 5. Run ngrok http 5050 (or 5000 whichever port is free) in another terminal
 
-6. Add webhook to the bitbucket repo and copy payload url from previous screen
+6. Add webhook to the bitbucket repo and copy payload url(ttps://04e0-147-161-166-182.ngrok-free.app/payload) from previous screen
 
 Now when you create a new PR in that repo or if code gets merged the webhook will get triggered
