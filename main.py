@@ -1,7 +1,6 @@
 from run_tutorial import generate_tutorial
 
 if __name__ == "__main__":
-    # you can still invoke your CLI this way
     import argparse
 
     parser = argparse.ArgumentParser(

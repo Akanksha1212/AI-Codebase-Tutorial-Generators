@@ -17,31 +17,10 @@
    )
    ```
 
-   You can use your own models. We highly recommend the latest models with thinking capabilities (Claude 3.7 with thinking, O1). You can verify that it is correctly set up by running:
-   ```bash
-   python utils/call_llm.py
-   ```
+4. To run the webhook listener locally run python3 webhook.py 
 
-4. Generate a complete codebase tutorial by running the main script:
-    ```bash
-    # Analyze a GitHub repository
-    python main.py --repo https://github.com/username/repo --include "*.py" "*.js" --exclude "tests/*" --max-size 50000
-    python main.py --repo https://github.com/MithunKiniStar/E-Commerce-Microservice-master --include "*.java" "*.xml" "*.properties" "*.yml" --exclude "tests/*" "target/*" --language english
+5. Run ngrok http 5050 (or 5000 whichever port is free) in another terminal
 
-    # Or, analyze a local directory
-    python main.py --dir /path/to/your/codebase --include "*.py" --exclude "*test*"
+6. Add webhook to the bitbucket repo and copy payload url from previous screen
 
-    ```
-
-    - `--repo` or `--dir` - Specify either a GitHub repo URL or a local directory path (required, mutually exclusive)
-    - `-n, --name` - Project name (optional, derived from URL/directory if omitted)
-    - `-t, --token` - GitHub token (or set GITHUB_TOKEN environment variable)
-    - `-o, --output` - Output directory (default: ./output)
-    - `-i, --include` - Files to include (e.g., "*.py" "*.js")
-    - `-e, --exclude` - Files to exclude (e.g., "tests/*" "docs/*")
-    - `-s, --max-size` - Maximum file size in bytes (default: 100KB)
-    - `--language` - Language for the generated tutorial (default: "english")
-
-The application will crawl the repository, analyze the codebase structure, generate tutorial content in the specified language, and save the output in the specified directory (default: ./output).
-
-
+Now when you create a new PR in that repo or if code gets merged the webhook will get triggered

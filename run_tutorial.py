@@ -5,9 +5,11 @@ from flow import create_tutorial_flow
 dotenv.load_dotenv()
 
 DEFAULT_INCLUDE_PATTERNS = {
-    "*.py", "*.js", "*.jsx", "*.ts", "*.tsx", "*.go", "*.java",
-    "*.pyi", "*.pyx", "*.c", "*.cc", "*.cpp", "*.h", "*.md",
-    "*.rst", "Dockerfile", "Makefile", "*.yaml", "*.yml",
+    # Language files at any depth
+    "**/*.py", "**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx",
+    "**/*.go", "**/*.java", "**/*.pyi", "**/*.pyx",
+    "**/*.c", "**/*.cc", "**/*.cpp", "**/*.h",
+    "*.md", "*.rst", "Dockerfile", "Makefile", "**/*.yaml", "**/*.yml",
 }
 
 DEFAULT_EXCLUDE_PATTERNS = {
