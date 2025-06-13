@@ -4,3 +4,7 @@ gitpython>=3.1.0
 google-cloud-aiplatform>=1.25.0
 google-genai>=1.9.0
 python-dotenv>=1.0.0
+Flask
+requests
+python-dotenv
+gunicorn
